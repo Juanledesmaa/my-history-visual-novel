@@ -18,6 +18,7 @@ label intro:
     juanito "Este juego narra la historia de 2 personas que era imposible que se reencontraran."
     juanito "Sin embargo, Dios fue tan bueno que al igual que un eclipse nuestros caminos se volvieron a cruzar de una forma inesperada."
 
+
     ## Pensativo
     juanito "A ver, ¿Por donde podria empezar la historia?"
 
