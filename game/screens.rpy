@@ -303,6 +303,8 @@ screen quick_menu():
 ## the player has not explicitly hidden the interface.
 init python:
     config.overlay_screens.append("quick_menu")
+    config.overlay_screens.append("points_button")
+
 
 default quick_menu = True
 
@@ -1774,3 +1776,8 @@ style slider_slider:
 
 transform halfsize:
     zoom 0.5
+
+# A screen that shows the player current points
+screen points_button():
+    vbox xalign 0.95 yalign 0:
+        textbutton "Points: 0"
