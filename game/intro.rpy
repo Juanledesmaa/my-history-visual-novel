@@ -3,7 +3,25 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define juanito = Character("Juanito", image="juanito")
+init python:
+    def beepy_voice(event, interact=True, **kwargs):
+        if not interact:
+            return
+
+        if event == "show_done":
+            renpy.sound.play("sounds/bleep005.ogg", loop=True)
+            renpy.sound.set_volume(0.15, 0, "sound")
+        elif event == "slow_done":
+            renpy.sound.stop(fadeout=1)
+
+    renpy.music.register_channel("soundEffect", "sfx") 
+
+define audio.correct = "sounds/correct.wav"
+define audio.error = "sounds/error.wav"
+define audio.airplane = "sounds/airplane.wav"
+
+# define juanito = Character("Juanito", image="juanito")
+define juanito = Character("Juanito", callback=beepy_voice)
 
 default first_choice_done = False
 # player_name, try to call player_name always with {color=#f00}[player_name]!{/color}
@@ -17,6 +35,7 @@ label intro:
     scene bg maracaibo
     with fade
     show juanito talking at halfsize, left
+    with moveinleft
     juanito "Hey! Hola! Bienvenido a mi historia."
     juanito "Este juego narra la historia de 2 personas que era imposible que se reencontraran."
     juanito "Sin embargo, Dios fue tan bueno que al igual que un eclipse nuestros caminos se volvieron a cruzar de una forma inesperada."
@@ -73,6 +92,8 @@ label intro_menu_choice:
             jump correct_choice_intro
 
 label wrong_choice_intro:
+    play soundEffect error fadeout 0.5 fadein 0.5 noloop volume 0.05
+
     if first_choice_done == False:
         $ first_choice_done = True
 
@@ -125,3 +146,54 @@ label game_explanation:
 
 label skip_game_explanation:
     juanito "Wow, estamos muy confiados por aqui. Seguro has jugado muchos juegos en el pasado o nos conoces demasiado bien"
+
+
+# Part 2
+
+label intro_part_two:
+    juanito "Bueno, ¿por donde puedo continuar?"
+    juanito "Ahh si, luego de esa ultima ocasion ella partio para puerto rico"
+    hide juanito
+
+    play soundEffect airplane fadeout 0.5 fadein 2 noloop volume 0.05
+    show bg avion
+    with pushright
+
+    show juanito talking at halfsize, left
+    with moveinleft
+
+    juanito "Y poco tiempo despues de eso yo me fui para Argentina"
+    juanito "Hay tantas cosas que me hubiera gustado decirle antes"
+    juanito "Hay algo en ella que me parecia muy genial y no se lo dije en ese momento"
+    juanito "Te pregunto a ti, {color=#f00}[player_name]{/color}"
+
+
+
+label intro_part_two_menu_choice:
+
+    juanito "¿Tienes idea de que era eso que me parecia genial?"
+
+    menu:
+        "Su sonrisa.":
+            jump intro_part_two_menu_choice_wrong_answer
+        "Su cabello pintado":
+            jump intro_part_two_menu_choice_correct_answer
+        "Su personalidad.":
+            jump intro_part_two_menu_choice_wrong_answer
+        "Sus ojos":
+            jump intro_part_two_menu_choice_wrong_answer
+
+label intro_part_two_menu_choice_wrong_answer:
+    play soundEffect error fadeout 0.5 fadein 0.5 noloop volume 0.10
+
+    juanito "No, realmente eso no fue"
+
+label intro_part_two_menu_choice_correct_answer:
+    play soundEffect correct fadeout 0.5 fadein 0.5 noloop volume 0.10
+
+    ## Feliz
+    juanito "Sii, correcto. Eso me llamaba mucho la atencion en ella"
+    juanito "La verdad en ese entonces era algo que me parecia genial su estilo de pelo, le llegue a ver el pelo verde, rosado y blanco"
+    juanito "Y la verdad era algo que me parecia super genial y atrevido en ella"
+
+    ## Telefono
