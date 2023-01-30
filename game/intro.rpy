@@ -109,6 +109,8 @@ label wrong_choice_intro:
 return
 
 label correct_choice_intro:
+    play soundEffect correct fadeout 0.5 fadein 0.5 noloop volume 0.10
+
     if first_choice_done == False:
         ## Sorprendido
         juanito "Woow, la verdad no pense que lo adivinarias a la primera, {color=#f00}[player_name]!{/color}"
