@@ -189,6 +189,8 @@ label intro_part_two_menu_choice_wrong_answer:
     play soundEffect error fadeout 0.5 fadein 0.5 noloop volume 0.10
 
     juanito "No, realmente eso no fue"
+    juanito "¿Te parece si lo vuelves a intentar?"
+    jump intro_part_two_menu_choice
 
 label intro_part_two_menu_choice_correct_answer:
     play soundEffect correct fadeout 0.5 fadein 0.5 noloop volume 0.10
@@ -197,5 +199,20 @@ label intro_part_two_menu_choice_correct_answer:
     juanito "Sii, correcto. Eso me llamaba mucho la atencion en ella"
     juanito "La verdad en ese entonces era algo que me parecia genial su estilo de pelo, le llegue a ver el pelo verde, rosado y blanco"
     juanito "Y la verdad era algo que me parecia super genial y atrevido en ella"
+    juanito "Esto fue algo muy importante en nuestra futura comunicacion debido a que este talento de ella el cual comenzo como hobby"
+    ## Apenado
+    juanito "Llego a convertirse en su trabajo. Tuve la suerte de que varias veces publicaba en instagram cosas relacionadas a su trabajo y yo aprovechaba estas ocasiones para escribirle"
 
     ## Telefono
+
+label intro_part_two_argentina:
+    show bg argentina_paisaje
+    with dissolve
+
+    juanito "Estar en argentina fue una experiencia increible para mi, al igual que ella mi hobby se conviertio en mi carrera"
+    juanito "Y esto es algo que me encanta que compartimos en comun"
+    juanito "Ella solia pintar el cabello a sus amigas y a ella misma, yo siempre ame todo lo relacionado a las computadoras"
+
+    ## Usar el telefono
+    juanito "Sinceramente los primeros años no charlamos mucho, sin embargo siempre estaba atento a que subiera una foto"
+    juanito "Pero muchas veces me ganaba la timidez, piensenlo. ¿Yo en Argentina, ella en Puerto Rico que podia decirle que nos acercara mas?"
