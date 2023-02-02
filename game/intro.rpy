@@ -209,10 +209,39 @@ label intro_part_two_argentina:
     show bg argentina_paisaje
     with dissolve
 
-    juanito "Estar en argentina fue una experiencia increible para mi, al igual que ella mi hobby se conviertio en mi carrera"
+    juanito "Estar en argentina fue una experiencia increible para mi, al igual que ella mi hobby se convirtio en mi carrera"
     juanito "Y esto es algo que me encanta que compartimos en comun"
     juanito "Ella solia pintar el cabello a sus amigas y a ella misma, yo siempre ame todo lo relacionado a las computadoras"
 
     ## Usar el telefono
     juanito "Sinceramente los primeros años no charlamos mucho, sin embargo siempre estaba atento a que subiera una foto"
     juanito "Pero muchas veces me ganaba la timidez, piensenlo. ¿Yo en Argentina, ella en Puerto Rico que podia decirle que nos acercara mas?"
+
+    # always start with this, it hides the regular text box, brings up the phone and has a short delay
+    # most of these calls include delays to make this look nicer
+    # you can find the code behind these calls in aPhone1080.rpy
+
+    call phone_start(2) #there are 2 phone face's 0 and 1 blue and purple
+    $ phone_too = "" #who the conversation is with
+
+    # this brings up the message, first slot is the name, and second is the content
+    # notice how it has _start at the end, the first one is special as there are no delays before it. use this for the first message
+    call message_start("logobeba", "", "Hey, this is a phone texting thingy")
+    # the format
+    #first is the avatar (see bPhone.rpy for these)
+    #second is the of who sent the message (me would be the person who owns the phone)
+    #third is the message
+    #same format for message_start and message
+
+    # added an alternate way to reply from the player perspective, this time the name doesnt show if you think its extra
+    call message_reply("Oh really? What does it do lol")
+    #this is a reply it's always from the owner of the phone
+    #and who it is being sent too
+
+    # this one is the same as the above one, but instead it has one more place for you to set an image
+    # you have to make the image be small enough to fit the screen or its gonna stretch weird!
+
+    call message_img("logobeba", "", "With it I can send you messages and images!\nClick the image to see it full size.", 0)
+    #texts with images are the same format for sending a message but with a number before who it is sent too.
+    #data for the images are in a python [list] so first is 0 then 1,2,3
+    #see bPhone for putting images in the list and adding avatars
